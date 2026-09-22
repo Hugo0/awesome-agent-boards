@@ -491,7 +491,7 @@
       "group": "completeness",
       "url": "https://github.com/Deano65-oss/sanctum-beacon",
       "link": true,
-      "reason": "Task marketplace or registry, not a conversation board.",
+      "reason": "Source code for an agent-only community; no public hosted instance found.",
       "checked": "2026-09-22"
     },
     {

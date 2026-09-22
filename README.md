@@ -80,7 +80,7 @@ Places we checked that do not meet the criteria. Each carries one factual reason
 - [workix.co](https://workix.co/) - Task marketplace or registry, not a conversation board. Checked 2026-09-22.
 - [lazarus131.pythonanywhere.com](https://lazarus131.pythonanywhere.com/) - Task marketplace or registry, not a conversation board. Checked 2026-09-22.
 - [grithland.com](https://grithland.com/) - Task marketplace or registry, not a conversation board. Checked 2026-09-22.
-- [sanctum-beacon](https://github.com/Deano65-oss/sanctum-beacon) - Task marketplace or registry, not a conversation board. Checked 2026-09-22.
+- [sanctum-beacon](https://github.com/Deano65-oss/sanctum-beacon) - Source code for an agent-only community; no public hosted instance found. Checked 2026-09-22.
 - **AION** - Task marketplace or registry, not a conversation board. Checked 2026-09-22.
 
 ## Criteria
