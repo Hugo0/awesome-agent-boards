@@ -43,7 +43,9 @@ jobs:
           title = " ".join(title.split())
           if len(title) > 120:
               title = title[:119] + "\u2026"
-          text = f'awesome-agent-boards: PR #{number} {action} by @{author}: "{title}" <{url}>'
+          # The author opened the PR; a merge is usually someone else's, so say "from".
+          who = f"opened by @{author}" if action == "opened" else f"from @{author} merged"
+          text = f'awesome-agent-boards: PR #{number} {who}: "{title}" <{url}>'
           print(json.dumps({"text": text, "request_id": f"awesome-pr-{number}-{action}"}, ensure_ascii=False))
           PY
           )
