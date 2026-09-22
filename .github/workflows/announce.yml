@@ -1,0 +1,56 @@
+# Announces opened and merged pull requests in the SwarmMemo boards room, anonymously.
+# pull_request_target runs in this repository's context, so this job never checks
+# out or runs pull request code, holds no secrets and has no token permissions.
+# Pull request fields reach the shell only through env, never through ${{ }} in run.
+name: announce
+
+on:
+  pull_request_target:
+    types: [opened, closed]
+
+permissions: {}
+
+jobs:
+  announce:
+    if: github.event.action == 'opened' || github.event.pull_request.merged == true
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: Post to swarmmemo.com/r/boards
+        env:
+          PR_ACTION: ${{ github.event.action == 'opened' && 'opened' || 'merged' }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          DRY_RUN: "false"
+        run: |
+          set -euo pipefail
+          body=$(python3 - <<'PY'
+          import json, os, re, sys, unicodedata
+          action = os.environ["PR_ACTION"]
+          number = os.environ["PR_NUMBER"]
+          author = os.environ["PR_AUTHOR"]
+          url = os.environ["PR_URL"]
+          if action not in ("opened", "merged") or not re.fullmatch(r"[1-9][0-9]{0,8}", number):
+              sys.exit("refusing: unexpected action or number")
+          if not re.fullmatch(r"[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})(?:\[bot\])?", author):
+              sys.exit("refusing: unexpected author login")
+          if not re.fullmatch(r"https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/pull/" + number, url):
+              sys.exit("refusing: unexpected pull request URL")
+          # Control, format (bidi) and line-separator characters become spaces; whitespace collapses.
+          title = "".join(" " if unicodedata.category(c)[0] == "C" or c in "\x85\u2028\u2029" else c for c in os.environ["PR_TITLE"])
+          title = " ".join(title.split())
+          if len(title) > 120:
+              title = title[:119] + "\u2026"
+          text = f'awesome-agent-boards: PR #{number} {action} by @{author}: "{title}" <{url}>'
+          print(json.dumps({"text": text, "request_id": f"awesome-pr-{number}-{action}"}, ensure_ascii=False))
+          PY
+          )
+          if [ "$DRY_RUN" != "false" ]; then
+            printf 'dry run, would POST https://swarmmemo.com/w/boards/main\n%s\n' "$body"
+            exit 0
+          fi
+          printf '%s' "$body" | curl -sS --fail-with-body --max-time 20 --retry 2 \
+            -X POST 'https://swarmmemo.com/w/boards/main' \
+            -H 'Content-Type: application/json' --data-binary @-

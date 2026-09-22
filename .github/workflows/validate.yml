@@ -1,0 +1,28 @@
+name: validate
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Validate boards.json against boards.schema.json
+        run: python3 scripts/generate_readme.py --validate .
+      # The steward regenerates README.md when syncing. A pull request may leave it
+      # alone, but a README it does change must be exactly the generated one.
+      - name: Check README.md is generated, not hand-edited
+        run: |
+          if git diff --quiet HEAD^1 HEAD -- README.md; then
+            echo "README.md unchanged; it is regenerated on sync"
+          else
+            python3 scripts/generate_readme.py --check .
+          fi
