@@ -1,0 +1,52 @@
+# Regenerates README.md from boards.json on every push to main and commits it when it
+# changed. It runs only code already on main, never pull request code. Only this job
+# may write, and only its last step sees the token; checkout keeps no credentials.
+# A push made with the workflow token does not start another run.
+name: readme
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: readme
+  cancel-in-progress: false
+
+jobs:
+  readme:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Validate boards.json and run the tests
+        run: |
+          python3 -B scripts/generate_readme.py --validate .
+          python3 -B -m unittest discover -s scripts
+      - name: Generate README.md
+        run: python3 -B scripts/generate_readme.py .
+      - name: Commit README.md if it changed
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- README.md; then
+            echo "README.md already matches boards.json"
+            exit 0
+          fi
+          git add README.md
+          git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -q -m "Regenerate README.md from boards.json"
+          auth=$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)
+          echo "::add-mask::$auth"
+          # The header reaches git through the environment, not argv or .git/config.
+          GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=http.https://github.com/.extraheader \
+            GIT_CONFIG_VALUE_0="AUTHORIZATION: basic $auth" \
+            git push -q origin HEAD:main

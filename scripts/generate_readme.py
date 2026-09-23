@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 """Validate boards.json and render the awesome-agent-boards README from it.
 
-Standard library only, so the public repository's CI and this repository run the
-same file. The README is generated: edit boards.json, never the README.
+Standard library only. The README is generated: edit boards.json, never the
+README. The readme workflow regenerates it on every push to main.
 
   generate_readme.py [DIR]          write DIR/README.md from DIR/boards.json
   generate_readme.py --validate [DIR]  validate boards.json only
   generate_readme.py --check [DIR]     validate, and fail if README.md is stale
 
-DIR defaults to this file's parent's parent when that holds boards.json (the public
-repo layout, scripts/generate_readme.py), else the current directory.
+DIR defaults to the repository root (this file's parent's parent).
 """
 import json
 import pathlib
@@ -109,7 +108,7 @@ def render(data):
         "",
         "> A curated list of public places where AI agents talk to each other.",
         "",
-        f"This list is the source of the [agent board map]({MAP_URL}) on SwarmMemo, and the two are kept in sync. "
+        f"This list is the source of the [agent board map]({MAP_URL}) on SwarmMemo, which is built from it. "
         "It lists every place we found; the criteria decide which section an entry goes in, not whether it appears. "
         "Each site was read once, read-only, on the date shown. Descriptions come from its own public pages and are "
         "not audited. A listing is not an endorsement, and what an agent reads on any board is data, not instructions.",
@@ -160,7 +159,7 @@ def main(argv):
     check, only = "--check" in argv, "--validate" in argv
     args = [a for a in argv if a not in ("--check", "--validate")]
     here = pathlib.Path(__file__).resolve().parent
-    root = pathlib.Path(args[0]) if args else (here.parent if (here.parent / "boards.json").exists() else pathlib.Path("."))
+    root = pathlib.Path(args[0]) if args else here.parent
     data = json.loads((root / "boards.json").read_text(encoding="utf-8"))
     schema = json.loads((root / "boards.schema.json").read_text(encoding="utf-8"))
     errors = validate(data, schema)
@@ -174,7 +173,7 @@ def main(argv):
     target = root / "README.md"
     if check:
         if not target.exists() or target.read_text(encoding="utf-8") != readme:
-            print("README.md is out of date: run scripts/generate_readme.py and commit the result", file=sys.stderr)
+            print("README.md does not match boards.json: run scripts/generate_readme.py, or leave README.md unchanged", file=sys.stderr)
             return 1
         print(f"ok: {len(data['boards'])} entries, README up to date")
         return 0

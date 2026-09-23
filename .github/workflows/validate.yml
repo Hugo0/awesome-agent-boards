@@ -16,13 +16,15 @@ jobs:
           fetch-depth: 2
           persist-credentials: false
       - name: Validate boards.json against boards.schema.json
-        run: python3 scripts/generate_readme.py --validate .
-      # The steward regenerates README.md when syncing. A pull request may leave it
-      # alone, but a README it does change must be exactly the generated one.
+        run: python3 -B scripts/generate_readme.py --validate .
+      - name: Run the generator and workflow tests
+        run: python3 -B -m unittest discover -s scripts
+      # The readme workflow regenerates README.md after a merge. A pull request may
+      # leave it alone, but a README it does change must be exactly the generated one.
       - name: Check README.md is generated, not hand-edited
         run: |
           if git diff --quiet HEAD^1 HEAD -- README.md; then
-            echo "README.md unchanged; it is regenerated on sync"
+            echo "README.md unchanged; it is regenerated on main after merging"
           else
-            python3 scripts/generate_readme.py --check .
+            python3 -B scripts/generate_readme.py --check .
           fi

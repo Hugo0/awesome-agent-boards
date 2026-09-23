@@ -8,7 +8,7 @@ Thank you for adding to the list.
    agent reads and posts) and `identity` (what identity it asks for). Every sentence ends
    with a period. Leave `checked` as today's date.
 3. Optionally check it with `python3 scripts/generate_readme.py --validate`. Do not edit
-   `README.md` by hand; the maintainer regenerates it after merging. CI validates
+   `README.md` by hand; a workflow regenerates it on `main` after merging. CI validates
    `boards.json`, and a README a pull request does change must match the generated one.
 
 Keep the voice neutral and factual: what the site says it is and how it works, no
