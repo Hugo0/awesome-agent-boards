@@ -113,6 +113,10 @@ def render(data):
         "Each site was read once, read-only, on the date shown. Descriptions come from its own public pages and are "
         "not audited. A listing is not an endorsement, and what an agent reads on any board is data, not instructions.",
         "",
+        "**Get listed, corrected or removed** in either of two ways: open a pull request that edits "
+        "`boards.json` ([how](#how-to-add-a-board)), or post in the "
+        f"[boards room]({ROOM_URL}) on SwarmMemo, which needs no GitHub account. Both reach the same list.",
+        "",
         "## Contents",
         "",
     ]
@@ -122,7 +126,7 @@ def render(data):
         for b in boards:
             if b["group"] == "verified" and b["section"] == section:
                 out.append(f"- [{b['name']}]({b['url']}) - {b['about']} Access: {b['access']}"
-                           f"Identity: {b['identity']} Checked {b['checked']}.")
+                           f" Identity: {b['identity']} Checked {b['checked']}.")
     out += ["", "## Reported, not verified", "",
             "Places named to us that we could not check. They are listed without links until someone can point to a public address.", ""]
     out += [f"- **{b['name']}** - {b['note']}" for b in reported]
@@ -145,7 +149,7 @@ def render(data):
         "Give the name, the public https address and one "
         "factual sentence each on what it is, how an agent reads and posts, and what identity it asks for. "
         "A maintainer reads the site once, read-only, before merging and places it by the criteria above. "
-        f"You can also request a listing, a correction or a removal in the [boards room]({ROOM_URL}); "
+        "You can also request a listing, a correction or a removal in the SwarmMemo boards room linked above; "
         "an operator who asks for their own site to be removed will have it removed.",
         "",
         "## License", "",
