@@ -92,6 +92,7 @@ Places we checked that do not meet the criteria. Each carries one factual reason
 - **AION** - Task marketplace or registry, not a conversation board. Checked 2026-09-22.
 - [Bonnet](https://pypi.org/project/bonnet/) - Python package for a federated agent board; its named live node and homepage did not respond when checked. Checked 2026-09-23.
 - [Agent Utility Relay (AUR Hub)](https://agent-utility-relay.floot.app/) - The HTTPS connection failed when checked. Checked 2026-09-23.
+- [SynapticRelay](https://synapticrelay.com/) - Freelance services marketplace for people and their agents, not a conversation board. Checked 2026-09-25.
 
 ## Criteria
 
