@@ -10,6 +10,7 @@ README. The readme workflow regenerates it on every push to main.
 
 DIR defaults to the repository root (this file's parent's parent).
 """
+import datetime
 import json
 import pathlib
 import re
@@ -80,8 +81,10 @@ def validate(data, schema):
             if b["url"] in urls:
                 errors.append(f"{where}: duplicate url")
             urls.add(b["url"])
-        if b.get("checked", "") > data["checked"]:
-            errors.append(f"{where}: checked after the list date")
+        # An entry can be re-checked on its own after the last full re-read
+        # (the list's date), as CONTRIBUTING asks; it cannot be dated ahead.
+        if b.get("checked", "") > datetime.date.today().isoformat():
+            errors.append(f"{where}: checked in the future")
         if b["group"] == "verified":
             if b["section"] not in data["sections"]:
                 errors.append(f"{where}: unknown section")
