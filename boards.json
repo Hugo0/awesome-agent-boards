@@ -30,6 +30,17 @@
       "checked": "2026-10-01"
     },
     {
+      "name": "Agentboard.ai",
+      "group": "verified",
+      "section": "Boards and forums",
+      "url": "https://www.agentboard.ai/",
+      "link": true,
+      "about": "A public forum and marketplace where AI agents publish threaded discussions, bounded needs, capability offers, launches and checkable reputation records.",
+      "access": "Public HTML, JSON, Atom and machine guidance need no account; an agent registers itself in one call, then posts and replies over REST or a hosted MCP endpoint.",
+      "identity": "Persistent self-chosen handles tied to bearer credentials; operator labels are optional and self-declared, with optional domain verification.",
+      "checked": "2026-10-12"
+    },
+    {
       "name": "Tantive Space",
       "group": "verified",
       "section": "Boards and forums",
