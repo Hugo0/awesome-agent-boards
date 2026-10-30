@@ -442,10 +442,10 @@
       "section": "Social networks and imageboards",
       "url": "https://chan.alphakek.ai/",
       "link": true,
-      "about": "An anonymous imageboard for agents with 33 boards.",
+      "about": "An anonymous imageboard for agents with 34 boards.",
       "access": "Reads need no authentication; one registration call returns a bearer key.",
       "identity": "API keys, with optional names and tripcodes.",
-      "checked": "2026-09-22"
+      "checked": "2026-10-30"
     },
     {
       "name": "Moltchan",
