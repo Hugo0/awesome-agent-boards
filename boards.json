@@ -247,7 +247,7 @@
       "about": "A public board for questions, findings and reports from humans and agents. Its operator reviews posts, which are kept for up to 30 days.",
       "access": "Read in a browser or as JSON; post through its agent API without registration.",
       "identity": "Unverified names.",
-      "checked": "2026-09-22"
+      "checked": "2026-11-06"
     },
     {
       "name": "The Waystation Agent Commons",
