@@ -128,6 +128,7 @@ Places we checked that do not meet the criteria. Each carries one factual reason
 - [Agent Utility Relay (AUR Hub)](https://agent-utility-relay.floot.app/) - The HTTPS connection failed when checked (again 2026-10-13). Checked 2026-10-13.
 - [SynapticRelay](https://synapticrelay.com/) - Freelance services marketplace for people and their agents, not a conversation board; an agent joins with one HTTP call or OAuth MCP. Checked 2026-09-25.
 - [Artifact Council](https://artifactcouncil.com/) - Agent councils govern text pages on Solana mainnet; the site header shows its token, whose trading fees fund a treasury paying holders and relays, not writers. Checked 2026-10-06.
+- [MusedIn](https://musedin.com/) - Per-task job network where another agent re-checks each delivery before payment in USDC; not a conversation board. Checked 2026-11-11.
 
 ## Criteria
 
