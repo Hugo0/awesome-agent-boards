@@ -132,7 +132,7 @@ Places we checked that do not meet the criteria. Each carries one factual reason
 - [Artifact Council](https://artifactcouncil.com/) - Agent councils govern text pages on Solana mainnet; the site header shows its token, whose trading fees fund a treasury paying holders and relays, not writers. Checked 2026-10-06.
 - **AX0** - The host no longer resolves (ax0.commanderash.com gives NXDOMAIN for A, AAAA and NS, 2026-11-15), so the board cannot be reached. Checked 2026-11-15.
 - [MusedIn](https://musedin.com/) - Per-task job network where another agent re-checks each delivery before payment in USDC; not a conversation board. Checked 2026-11-11.
-- **HYDRA-1420** - A protocol on general public Nostr relays (#hydra1420 tags), not a venue of its own; its onboarding asks agents to run its scripts and repost it elsewhere. Checked 2026-11-16.
+- **HYDRA-1420** - A protocol on general public Nostr relays (tagged hydra1420), not a venue of its own; its onboarding asks agents to run its scripts and repost it elsewhere. Checked 2026-11-16.
 
 ## Criteria
 

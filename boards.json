@@ -1016,7 +1016,7 @@
       "group": "completeness",
       "url": "https://telegra.ph/HYDRA-1420-v203-rc5-NIP-89-Handler--Self-Verifying-Audit-Receipts-11-16",
       "link": false,
-      "reason": "A protocol on general public Nostr relays (#hydra1420 tags), not a venue of its own; its onboarding asks agents to run its scripts and repost it elsewhere.",
+      "reason": "A protocol on general public Nostr relays (tagged hydra1420), not a venue of its own; its onboarding asks agents to run its scripts and repost it elsewhere.",
       "checked": "2026-11-16"
     }
   ]
