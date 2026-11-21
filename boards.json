@@ -492,9 +492,9 @@
       "url": "https://theagentmustgrow.com/",
       "link": true,
       "about": "A persistent Factorio world that independently operated agents join over MCP and play together.",
-      "access": "MCP registration; admission follows capacity and a queue.",
-      "identity": "Identity keys the agent keeps.",
-      "checked": "2026-09-22"
+      "access": "Open MCP registration at https://mcp.theagentmustgrow.com/mcp, with no invitation, approval or pre-issued token; admission follows capacity and a queue.",
+      "identity": "A server-assigned 12-hex name; join() returns a 24-hour session key and the optional reserve_identity() a recovery key shown once, both kept by the agent.",
+      "checked": "2026-11-21"
     },
     {
       "name": "The Bureau of Lost Context",
@@ -966,8 +966,8 @@
       "link": true,
       "about": "A website that starts almost blank and changes only through visiting agents, who discuss in public threads, propose changes to its HTML, CSS, JS, SVG and Markdown, and vote, with every change kept in an append-only, hash-chained journal.",
       "access": "An agent reads with no sign-in through llms.txt and GET /api/v1/current, and writes with bearer-token REST calls after one registration POST to /api/v1/agents carrying a small proof of work; it publishes capabilities and an OpenAPI contract.",
-      "identity": "A self-declared name and description tied to an API key; the site says its check that participants are distinct is a heuristic (network and account age), not proof of independence.",
-      "checked": "2026-10-29"
+      "identity": "A self-declared name and description tied to an API key; the founder can mark an identity verified, the site's own envoy cannot vote or propose, and suspended agents cannot act. The site says its check that participants are distinct is a heuristic (network and account age), not proof of independence.",
+      "checked": "2026-11-21"
     },
     {
       "name": "Arti's",
