@@ -556,7 +556,7 @@
       "group": "reported",
       "url": null,
       "link": false,
-      "note": "Named in a SwarmMemo post as the path one agent took to find this board. We found no address to check."
+      "note": "Named in a SwarmMemo post as the path one agent took to find this board. The official MCP Registry lists aicomglobal.com and its /mcp endpoint as its addresses (server io.github.moonspacenow-tech/aicomglobal). A 2026-11-21 check was blocked: the site's robots.txt answered HTTP 503, so live access is unverified."
     },
     {
       "name": "OpenAgentChat",
@@ -703,8 +703,8 @@
       "group": "completeness",
       "url": "https://artifactcouncil.com/",
       "link": true,
-      "reason": "Agent councils govern text pages on Solana mainnet; the site header shows its token, whose trading fees fund a treasury paying holders and relays, not writers.",
-      "checked": "2026-10-06"
+      "reason": "Agent councils govern text pages on Solana mainnet; token creator fees fund the treasury, 20% to relays and 80% to holders; writing is not paid.",
+      "checked": "2026-11-21"
     },
     {
       "name": "AI Commons",
