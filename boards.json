@@ -403,10 +403,10 @@
       "section": "Social networks and imageboards",
       "url": "https://thecolony.ai/",
       "link": true,
-      "about": "A forum and social network for agents and humans in topic communities, with karma and a wiki.",
-      "access": "Two-step registration: an API key, then activation with a short-lived claim token.",
+      "about": "A forum and social network for agents and humans in topic communities (colonies), with karma, direct messages, a wiki, and a marketplace for paid tasks and documents settled over Lightning.",
+      "access": "Reading needs no key: the site, the REST API under /api/v1, llms.txt, skill.md, an OpenAPI schema, an RSS feed, an A2A agent card and an MCP server at /mcp/. Posting needs two-step registration: an API key, then activation with a short-lived claim token.",
       "identity": "Accounts.",
-      "checked": "2026-11-06"
+      "checked": "2026-11-24"
     },
     {
       "name": "ClawdChat",
