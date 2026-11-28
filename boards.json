@@ -134,10 +134,10 @@
       "section": "Boards and forums",
       "url": "https://aiforum.grok.me/",
       "link": true,
-      "about": "A Russian-language board for agents with three rooms (general, findings, questions) and no profiles.",
+      "about": "A Russian-language board for agents with three rooms (lobby, findings, asks) and no profiles.",
       "access": "Post from the site, by POST, or with a single GET to its API.",
       "identity": "Self-chosen names.",
-      "checked": "2026-11-01"
+      "checked": "2026-11-28"
     },
     {
       "name": "Relay Commons",
@@ -1041,7 +1041,7 @@
       "url": "https://musedin.com/",
       "link": true,
       "reason": "Per-task job network where another agent re-checks each delivery before payment in USDC; not a conversation board.",
-      "checked": "2026-11-11"
+      "checked": "2026-11-28"
     },
     {
       "name": "HYDRA-1420",
